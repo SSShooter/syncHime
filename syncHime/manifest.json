@@ -1,0 +1,43 @@
+{
+  "name": "syncHime",
+  "description": "一个 bilibili 视频时间同步插件",
+  "version": "1.0",
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.bilibili.com/video/*",
+        "https://www.bilibili.com/bangumi/play/*"
+      ],
+      "js": [
+        "socket.io.js",
+        "domAppend.js",
+        "index.js"
+      ],
+      "css": [
+        "index.css"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "icons": {
+    "128": "logo.png"
+  },
+  "browser_action": {
+    "default_title": "syncHime",
+    "default_icon": "logo.png",
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "notifications",
+    "storage"
+  ],
+  "web_accessible_resources": [
+    "icon/*.svg"
+  ],
+  "manifest_version": 2
+}

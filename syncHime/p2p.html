@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>webrtc test</title>
+  <script src="https://cdn.jsdelivr.net/npm/socket.io-client@2/dist/socket.io.js"></script>
+
+</head>
+
+<body>
+  <div class="container">
+    <div class="bilibili-player-video">
+      <video preload="auto" controls src="http://clips.vorwaerts-gmbh.de/big_buck_bunny.mp4"></video>
+    </div>
+    <div id="connect-window">
+      <div>
+        <div id="socket-id"></div>
+        <input type="text" placeholder="连结对象" id="target-input" />
+        <button class="start-button" onclick="startConnect()">LINK</button>
+      </div>
+      <div>
+        <input type="text" placeholder="发送内容" id="send-input" />
+        <button id="send">send</button>
+        <button id="sync">sync</button>
+        <button id="close">结束连结</button>
+        <div>对方进度：<span id="currentTime-they"></span></div>
+        <div>对方状态：<span id="state-they"></span></div>
+        <div>我的进度：<span id="currentTime-me"></span></div>
+        <div>我的状态：<span id="state-me"></span></div>
+      </div>
+    </div>
+  </div>
+  <script src="./index.js"></script>
+</body>
+
+</html>

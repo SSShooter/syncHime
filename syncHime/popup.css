@@ -1,0 +1,21 @@
+#popup-window {
+  width: 200px;
+}
+input {
+  line-height: 20px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+button {
+  border: 2px solid #0c386e;
+  background: #0c386e;
+  color: #ffffff;
+  margin: 12px;
+}
+.center {
+  text-align: center;
+}
+.item-name {
+  color: #0c386e;
+  line-height: 30px;
+}

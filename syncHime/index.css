@@ -1,0 +1,108 @@
+#connect-window {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px;
+  width: 450px;
+  background-color: #fff;
+  border-color: #0c386e;
+  border-width: 2px;
+  border-style: solid;
+  color: #333333;
+  font-size: 12px;
+  z-index: 1001;
+  border-radius: 6px;
+  transition: background-color 1s 0s, height 1s 0s, width 1s 0s, color 1s 0s,
+    padding 1s 0s, border-color 1s 0s;
+}
+#connect-window * {
+  opacity: 1;
+  transition: opacity 1s 0.5s;
+}
+
+.shrink {
+  width: 12px !important;
+  height: 12px !important;
+  padding: 6px !important;
+  background-color: #0c386e !important;
+  border-color: #fff !important;
+  color: white !important;
+  overflow: hidden;
+}
+.shrink::before {
+  content: '同';
+}
+.shrink * {
+  opacity: 0 !important;
+}
+
+#message-box {
+  max-height: 200px;
+  overflow: auto;
+  line-height: 30px;
+}
+#message-box::-webkit-scrollbar {
+  width: 6px;
+  background-color: #f5f5f5;
+}
+#message-box::-webkit-scrollbar-thumb {
+  background-color: #0c386e;
+}
+#message-box::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+#message-box > p {
+  line-height: 1;
+  margin-bottom: 12px;
+}
+#message-box > .sys {
+  color: #888888;
+}
+#connect-window .state {
+  display: inline-block;
+  width: 49%;
+  box-sizing: border-box;
+  line-height: 30px;
+}
+#connect-window input {
+  line-height: 20px;
+  border: 1px solid #ccc;
+  padding: 5px;
+}
+#connect-box *,
+#message-sender * {
+  vertical-align: middle;
+}
+#message-sender input {
+  width: 355px;
+}
+#connect-box input {
+  width: 170px;
+}
+.svg-button {
+  width: 16px;
+  background: #ffca3a;
+  padding: 6px;
+  border-radius: 50%;
+  cursor: pointer;
+  margin-left: 8px;
+}
+#send {
+  background: #1982c4;
+}
+
+#sync {
+  background: #6a4c93;
+}
+
+#close {
+  background: #ff595e;
+}
+#start-button {
+  background: #8ac926;
+}
+
+#currentTime-they,
+#currentTime-me {
+  margin-left: 1em;
+}

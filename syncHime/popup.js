@@ -6,7 +6,7 @@ const save = document.querySelector('#save')
 
 chrome.storage.sync.get(['websocket', 'connectionType'], function (result) {
     console.log(result)
-    url.value = result.websocket
+    url.value = result.websocket || "synchime.herokuapp.com"
     type.value = result.connectionType || 'webrtc'
 });
 save.onclick = e => {

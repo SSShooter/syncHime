@@ -56,8 +56,8 @@ document.addEventListener("DOMContentLoaded", async function () {
 
   let result = await storageGet(['websocket', 'connectionType'])
   console.log(result)
-  let websocketUrl = result.websocket
-  let connectType = result.connectionType
+  let websocketUrl = result.websocket || "synchime.herokuapp.com"
+  let connectType = result.connectionType || "webrtc"
 
   connectWindow.ondblclick = () => {
     if (!connectWindow.className) connectWindow.className = "shrink";
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     sendInput.value = "";
   }
 
-  const socket = io("wss://" + websocketUrl || "synchime.herokuapp.com" + "/");
+  const socket = io("wss://" + websocketUrl + "/");
   pushMessage("websocket 开始连接", "sys");
   socket.on("connect", () => {
     pushMessage("websocket 连接成功", "sys");

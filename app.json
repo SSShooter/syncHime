@@ -1,6 +1,6 @@
 {
     "name": "syncHime",
-    "description": "一个 bilibili 视频时间同步插件",
+    "description": "一个 bilibili 视频时间同步插件，附带聊天功能",
     "repository": "https://github.com/ssshooter/syncHime",
     "keywords": [
         "node",

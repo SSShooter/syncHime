@@ -38,7 +38,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   ];
   let isHost = false;
   let globleTarget = "";
-  const video = document.querySelector(".bilibili-player-video video");
+  let video;
+  if (location.href.match("bilibili"))
+    video = document.querySelector(".bilibili-player-video video");
+  if (location.href.match("youtube"))
+    video = document.querySelector(".ytd-player video");
   const messageBox = document.querySelector("#message-box");
   const connectWindow = document.querySelector("#connect-window");
   const start = document.querySelector("#start-button");
@@ -54,10 +58,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   let currentTimeMe = document.querySelector("#currentTime-me");
   let currentTimeThey = document.querySelector("#currentTime-they");
 
-  let result = await storageGet(['websocket', 'connectionType'])
-  console.log(result)
-  let websocketUrl = result.websocket || "synchime.herokuapp.com"
-  let connectType = result.connectionType || "webrtc"
+  let result = await storageGet(["websocket", "connectionType"]);
+  console.log(result);
+  let websocketUrl = result.websocket || "synchime.herokuapp.com";
+  let connectType = result.connectionType || "webrtc";
 
   connectWindow.ondblclick = () => {
     if (!connectWindow.className) connectWindow.className = "shrink";
@@ -92,7 +96,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     let msg = sendInput.value;
     if (!msg) return;
     let obj = {
-      type: 'msg',
+      type: "msg",
       message: msg,
       timestamp: new Date(),
     };
@@ -107,9 +111,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     pushMessage("websocket 连接成功", "sys");
     document.querySelector("#socket-id").value = socket.id;
   });
-  socket.on('disconnect', (reason) => {
+  socket.on("disconnect", (reason) => {
     pushMessage("websocket 连接断开：" + reason, "sys");
-    if (reason === 'io server disconnect') {
+    if (reason === "io server disconnect") {
       // the disconnection was initiated by the server, you need to reconnect manually
       socket.connect();
     }
@@ -117,7 +121,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   });
   socket.on("message", (data) => {
     const { type, sdp, iceCandidate, from: target } = data;
-    globleTarget = target
+    globleTarget = target;
     if (type === "answer") {
       peer.setRemoteDescription(new RTCSessionDescription({ type, sdp }));
     } else if (type === "answer_ice") {
@@ -127,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     } else if (type === "offer_ice") {
       peer.addIceCandidate(iceCandidate);
     }
-    if (connectType === 'websocket') {
+    if (connectType === "websocket") {
       if (type === "timeupdate") setTime(data.currentTime, "they");
       else if (type === "stateupdate") setState(data.state, "they");
       else if (type === "offerSync") {
@@ -165,7 +169,12 @@ document.addEventListener("DOMContentLoaded", async function () {
       pushMessage("createOffer", "sys");
       await peer.setLocalDescription(offer);
       pushMessage("setLocalDescription", "sys");
-      socket.send({ type: offer.type, sdp: offer.sdp, to: globleTarget, from: socket.id });
+      socket.send({
+        type: offer.type,
+        sdp: offer.sdp,
+        to: globleTarget,
+        from: socket.id,
+      });
     } else {
       await peer.setRemoteDescription(offerSdp);
       pushMessage("setRemoteDescription", "sys");
@@ -298,17 +307,16 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   function sendConnectionMessage(obj) {
-    if (connectType === 'websocket') {
+    if (connectType === "websocket") {
       socket.send({
         ...obj,
         to: globleTarget,
         from: socket.id,
-      })
+      });
     } else {
-      dc.send(JSON.stringify(obj))
+      dc.send(JSON.stringify(obj));
     }
   }
-
 });
 
 function makeItDraggable(el) {
@@ -334,7 +342,7 @@ function storageGet(key) {
   return new Promise((resolve, reject) => {
     // key sample ['websocket']
     chrome.storage.sync.get(key, function (result) {
-      resolve(result)
+      resolve(result);
     });
-  })
+  });
 }

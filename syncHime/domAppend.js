@@ -1,10 +1,10 @@
-document.addEventListener('DOMContentLoaded', function () {
-  let send = chrome.runtime.getURL('icon/send.svg')
-  let connect = chrome.runtime.getURL('icon/connect.svg')
-  let disconnect = chrome.runtime.getURL('icon/disconnect.svg')
-  let sync = chrome.runtime.getURL('icon/sync.svg')
-  let div = document.createElement('div')
-  div.setAttribute('id', 'connect-window')
+document.addEventListener("DOMContentLoaded", function () {
+  let send = chrome.runtime.getURL("icon/send.svg");
+  let connect = chrome.runtime.getURL("icon/connect.svg");
+  let disconnect = chrome.runtime.getURL("icon/disconnect.svg");
+  let sync = chrome.runtime.getURL("icon/sync.svg");
+  let div = document.createElement("div");
+  div.setAttribute("id", "connect-window");
   div.innerHTML = `
   <div id="message-box"></div>
   <div id="message-sender">
@@ -21,8 +21,10 @@ document.addEventListener('DOMContentLoaded', function () {
     <input type="text" placeholder="连结对象" id="target-input" />
     <img title="connect" class="svg-button" id="start-button" src="${connect}" />
     <img title="disconnect" class="svg-button" id="close" src="${disconnect}" />
-  </div>`
+  </div>`;
   // document.querySelector('#app').appendChild(div)
-  document.querySelector('#bilibiliPlayer').appendChild(div)
+  if (location.href.match("bilibili"))
+    document.querySelector("#bilibiliPlayer").appendChild(div);
+  if (location.href.match("youtube")) document.body.appendChild(div);
   // document.body.appendChild(div)
 });

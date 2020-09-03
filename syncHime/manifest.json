@@ -1,7 +1,7 @@
 {
   "name": "syncHime",
   "description": "一个 bilibili 视频时间同步插件，附带聊天功能",
-  "version": "1.0",
+  "version": "1.1",
   "homepage_url": "https://github.com/ssshooter/syncHime",
   "background": {
     "scripts": [

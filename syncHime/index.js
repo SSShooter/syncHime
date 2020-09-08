@@ -107,7 +107,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   const socket = io("wss://" + websocketUrl + "/");
-  pushMessage("websocket 开始连接", "sys");
+  pushMessage(chrome.i18n.getMessage("websocketConnectStart"), "sys");
   socket.on("connect", () => {
     pushMessage("websocket 连接成功", "sys");
     document.querySelector("#socket-id").value = socket.id;
@@ -264,11 +264,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
   }
 
-  function transformTime(time){
+  function transformTime(time) {
     let min = Math.floor(time / 60);
     let sec = Math.floor(time % 60);
     if (sec < 10) sec = "0" + sec;
-    return min + ":" + sec
+    return min + ":" + sec;
   }
 
   function setState(state, type) {

@@ -14,7 +14,7 @@ save.onclick = (e) => {
       console.log("set");
       save.innerText = "已保存";
       setTimeout(() => {
-        save.innerText = "保存";
+        save.innerText = chrome.i18n.getMessage("save");
       }, 1000);
     }
   );

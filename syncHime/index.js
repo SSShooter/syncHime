@@ -36,6 +36,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       url: "stun:stun.l.google.com:19302",
     },
   ];
+
   let isHost = false;
   let globleTarget = "";
   let video;
@@ -142,7 +143,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         };
         sendConnectionMessage(obj);
       } else if (type === "answerSync") {
-        pushMessage("同步完成：" + data.currentTime, "sys");
+        pushMessage("同步完成：" + transformTime(data.currentTime), "sys");
         video.currentTime = data.currentTime;
       } else if (type === "msg") {
         if (connectWindow.className === "shrink") {
@@ -160,12 +161,13 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   async function startConnection(offerSdp) {
-    if (!offerSdp) {
+    if (connectType === "websocket") {
+      globleTarget = targetInput.value;
+      pushMessage("使用 websocket 连接，已设置连接目标", "sys");
+    } else if (!offerSdp) {
       isHost = true;
       globleTarget = targetInput.value;
-      const offer = await peer.createOffer({
-        iceRestart: true,
-      });
+      const offer = await peer.createOffer();
       pushMessage("createOffer", "sys");
       await peer.setLocalDescription(offer);
       pushMessage("setLocalDescription", "sys");
@@ -255,14 +257,18 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   function setTime(time, type) {
+    if (type === "they") {
+      currentTimeThey.innerText = transformTime(time);
+    } else {
+      currentTimeMe.innerText = transformTime(time);
+    }
+  }
+
+  function transformTime(time){
     let min = Math.floor(time / 60);
     let sec = Math.floor(time % 60);
     if (sec < 10) sec = "0" + sec;
-    if (type === "they") {
-      currentTimeThey.innerText = min + ":" + sec;
-    } else {
-      currentTimeMe.innerText = min + ":" + sec;
-    }
+    return min + ":" + sec
   }
 
   function setState(state, type) {

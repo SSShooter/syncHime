@@ -17,9 +17,11 @@ websocket-url 默认为 `synchime.herokuapp.com`，可以直接用，但是在�
 
 ## 使用
 
-![screenshot](screenshot.png)
+<img src="screenshot.png" width="400" />
 
 - 绿色按钮：连接
 - 红色按钮：断开
 - 蓝色按钮：发送信息
 - 紫色按钮：同步时间
+
+输入对方 ID 后点击连接即可

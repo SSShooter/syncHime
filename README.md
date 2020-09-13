@@ -4,6 +4,8 @@
 
 [webstore 传送门](https://chrome.google.com/webstore/detail/synchime/emjmcfhchipmaflddbmkoojhecpfpjmo)
 
+<img src="screenshot2.png" width="230" />
+
 connection-type 可以选择 `webrtc` 或 `websocket`，默认 `webrtc`
 
 - 选择 `webrtc` 时，使用 websocket 交换信息并建立连接后，直接 p2p 通讯

@@ -48,6 +48,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     await waitSec(2);
     video = document.querySelector(".iqp-player video");
   }
+  if (location.href.match("qq.com")){
+    await waitSec(2);
+    video = document.querySelector(".txp_video_container video");
+  }
   const messageBox = document.querySelector("#message-box");
   const connectWindow = document.querySelector("#connect-window");
   const start = document.querySelector("#start-button");

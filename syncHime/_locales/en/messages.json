@@ -4,11 +4,11 @@
     "description": "nope"
   },
   "save": {
-    "message": "save",
+    "message": "Save",
     "description": "nope"
   },
   "saving": {
-    "message": "saving",
+    "message": "Saving",
     "description": "nope"
   }
 }

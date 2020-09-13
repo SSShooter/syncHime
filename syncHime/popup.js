@@ -13,7 +13,7 @@ save.onclick = (e) => {
     { websocket: url.value, connectionType: type.value },
     function () {
       console.log("set");
-      save.innerText = "已保存";
+      save.innerText = chrome.i18n.getMessage("saving");
       setTimeout(() => {
         save.innerText = chrome.i18n.getMessage("save");
       }, 1000);

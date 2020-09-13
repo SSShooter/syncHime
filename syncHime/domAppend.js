@@ -30,6 +30,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     await waitSec(2);
     document.querySelector(".iqp-player").appendChild(div);
   }
+  if (location.href.match("qq.com")) {
+    await waitSec(2);
+    document.querySelector(".txp_video_container").appendChild(div);
+  }
   // document.body.appendChild(div)
 });
 

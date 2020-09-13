@@ -23,5 +23,19 @@ websocket-url 默认为 `synchime.herokuapp.com`，可以直接用，但是在�
 - 红色按钮：断开
 - 蓝色按钮：发送信息
 - 紫色按钮：同步时间
+- 双击对话框最小化
 
 输入对方 ID 后点击连接即可
+
+## TODO
+
+- 样式优化
+- i18n
+
+## 参考链接
+
+https://segmentfault.com/a/1190000020780854
+
+https://www.html5rocks.com/en/tutorials/webrtc/basics/
+
+https://www.html5rocks.com/en/tutorials/webrtc/infrastructure/

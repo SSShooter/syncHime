@@ -44,6 +44,10 @@ document.addEventListener("DOMContentLoaded", async function () {
     video = document.querySelector(".bilibili-player-video video");
   if (location.href.match("youtube"))
     video = document.querySelector(".ytd-player video");
+  if (location.href.match("iqiyi")) {
+    await waitSec(2);
+    video = document.querySelector(".iqp-player video");
+  }
   const messageBox = document.querySelector("#message-box");
   const connectWindow = document.querySelector("#connect-window");
   const start = document.querySelector("#start-button");
@@ -349,6 +353,32 @@ function storageGet(key) {
     // key sample ['websocket']
     chrome.storage.sync.get(key, function (result) {
       resolve(result);
+    });
+  });
+}
+
+function waitFor(propertyName, value) {
+  return new Promise((resolve, reject) => {
+    let observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (!mutation.addedNodes) return;
+        for (let i = 0; i < mutation.addedNodes.length; i++) {
+          // do things to your newly added nodes here
+          let node = mutation.addedNodes[i];
+          if (node[propertyName] === value) {
+            resolve();
+            // stop watching using:
+            observer.disconnect();
+          }
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: false,
+      characterData: false,
     });
   });
 }

@@ -1,10 +1,14 @@
 {
   "websocketConnectStart": {
     "message": "websocket 开始连接",
-    "description": "The string we search for. Put %20 between words that go together."
+    "description": "nope"
   },
   "save": {
     "message": "保存",
-    "description": "The string we search for. Put %20 between words that go together."
+    "description": "nope"
+  },
+  "saving": {
+    "message": "保存中",
+    "description": "nope"
   }
 }

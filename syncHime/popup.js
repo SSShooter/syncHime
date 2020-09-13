@@ -2,6 +2,7 @@ const url = document.querySelector("#websocket-url");
 const type = document.querySelector("#connection-type");
 
 const save = document.querySelector("#save");
+save.innerText = chrome.i18n.getMessage("save");
 
 chrome.storage.sync.get(["websocket", "connectionType"], function (result) {
   url.value = result.websocket || "synchime.herokuapp.com";

@@ -1,4 +1,5 @@
 #connect-window {
+  box-sizing: content-box !important;
   position: fixed;
   bottom: 20px;
   right: 20px;
@@ -15,7 +16,9 @@
   transition: background-color 1s 0s, height 1s 0s, width 1s 0s, color 1s 0s,
     padding 1s 0s, border-color 1s 0s;
 }
+
 #connect-window * {
+  box-sizing: content-box !important;
   opacity: 1;
   transition: opacity 1s 0.5s;
 }

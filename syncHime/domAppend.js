@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
   let send = chrome.runtime.getURL("icon/send.svg");
   let connect = chrome.runtime.getURL("icon/connect.svg");
   let disconnect = chrome.runtime.getURL("icon/disconnect.svg");
@@ -26,5 +26,17 @@ document.addEventListener("DOMContentLoaded", function () {
   if (location.href.match("bilibili"))
     document.querySelector("#bilibiliPlayer").appendChild(div);
   if (location.href.match("youtube")) document.body.appendChild(div);
+  if (location.href.match("iqiyi")) {
+    await waitSec(2);
+    document.querySelector(".iqp-player").appendChild(div);
+  }
   // document.body.appendChild(div)
 });
+
+function waitSec(sec) {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve();
+    }, sec * 1000);
+  });
+}
